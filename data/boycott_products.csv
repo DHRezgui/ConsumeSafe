@@ -1,0 +1,51 @@
+id,boycott_product,brand,category,reason,tunisian_alternative,alternative_brand,intensity
+1,Coca-Cola,The Coca-Cola Company,Beverages,Supporting Israeli occupation,Cactus Juice,Tiba,High
+2,Pepsi,PepsiCo,Beverages,Financial support to Israel,Orangina,SFBT,High
+3,Starbucks,Starbucks Corporation,Beverages,Pro-Israel statements,Cafe Local,Kapelka,High
+4,McDonalds,McDonald's,Food,Financial backing of Israeli military,Jaber Food,Local,Medium
+5,KFC,Yum! Brands,Food,Supporting Israeli apartheid,Chicken Grill,Belneef,Medium
+6,Dominos,Domino's Pizza,Food,Complicit in Israeli occupation,Pizza Hut Tunisia,Local,Medium
+7,HP Printer,HP,Electronics,Israeli settlements support,Epson,Global,Medium
+8,SodaStream,SodaStream,Electronics,Operates in Israeli settlements,Zephir Water,Local,High
+9,Hewlett Packard,HP Inc,Electronics,Military contracts with Israel,Brother,Global,Medium
+10,Intel,Intel Corporation,Electronics,Processors for Israeli military,AMD,Global,Low
+11,Microsoft,Microsoft,Software,Cloud services to Israeli military,Open Source,FOSS,Medium
+12,Google,Alphabet Inc,Technology,Dragonfly AI project with Israel,DuckDuckGo,Privacy,Medium
+13,Nestlé,Nestlé,Food,Multiple controversies including Palestine,Délice,Local,High
+14,Danone,Danone,Dairy,Operations in Israeli settlements,Yaourt Maison,Lactalis,High
+15,Sabra Hummus,PepsiCo,Food,Produced in Israeli settlements,Hummus Maison,Local,High
+16,SodaStream Bottles,SodaStream,Beverages,Israeli settlement enterprise,Reusable Bottles,Eco Brand,High
+17,Dead Sea Cosmetics,Various Israeli,Cosmetics,Products from occupied territories,Creams Local,SIPRODIS,High
+18,Ahava,Ahava Beauty,Cosmetics,Dead Sea settlement product,Crème Carthage,Tunisia,High
+19,Puma,Puma SE,Sportswear,Sponsorship controversies,Bata,Global,Low
+20,Soda Stream,SodaStream,Home Appliances,Illegal settlement operations,Eco Water,Local,High
+21,Pillsbury,General Mills,Food,Supporting Israeli interests,Couscous Sfax,Local,Medium
+22,Orange (Israel),Orange Telecom,Telecommunications,Operations in Israeli settlements,Ooredoo,Tunisia,High
+23,Volvo,Volvo Group,Automotive,Israel military contracts,Renault,Global,Low
+24,Boeing,Boeing,Aerospace,Military contracts,Airbus,Global,Low
+25,Caterpillar,Caterpillar Inc,Equipment,Bulldozers for demolitions,Volvo CE,Global,High
+26,G4S,G4S plc,Security,Security in settlements,Tunisia Guard,Local,Medium
+27,Elbit Systems,Elbit Systems,Defense,Surveillance systems,N/A,N/A,High
+28,Ben & Jerry's,Unilever,Ice Cream,Jewish owned pro-Palestinian stance - but under Unilever,Glacier,Local,Low
+29,Logitech,Logitech International,Electronics,Israeli technology company,Corsair,Global,Low
+30,Wix,Wix.com,Web Services,Israeli company,WordPress,Global,Low
+31,Cheetos,PepsiCo,Snacks,PepsiCo products,Chips Local,Tunisia,Low
+32,Lay's,PepsiCo,Snacks,PepsiCo products,Chips Sfax,Local,Low
+33,Frito Lay,PepsiCo,Snacks,PepsiCo products,Chips Gabès,Local,Low
+34,Tropicana,PepsiCo,Juices,PepsiCo products,Jus Local,Tunisia,Low
+35,Aquafina,PepsiCo,Water,PepsiCo products,Eau Sfax,Tunisia,Low
+36,Gatorade,PepsiCo,Sports Drinks,PepsiCo products,Boisson Sport,Local,Low
+37,Quaker,PepsiCo,Cereal,PepsiCo products,Céréales Local,Tunisia,Low
+38,Lipton Tea,PepsiCo,Beverages,PepsiCo products,Thé Local,Tunisia,Low
+39,Evian,Danone,Water,Danone products,Eau Minerale,Tunisia,Low
+40,Activia,Danone,Dairy,Danone products,Yaourt Sain,Local,Low
+41,Actimel,Danone,Drinks,Danone products,Boisson Santé,Tunisia,Low
+42,Volvic,Danone,Water,Danone products,Eau Pure,Local,Low
+43,Evian Water,Danone,Water,Danone products,Eau Source,Tunisia,Low
+44,Yoplait,General Mills,Dairy,Nestlé partnership,Yaourt Maajouba,Local,Low
+45,Häagen-Dazs,Nestlé,Ice Cream,Nestlé products,Glace Local,Tunisia,Low
+46,KitKat,Nestlé,Chocolate,Nestlé products,Chocolat Sfax,Local,Low
+47,Nescafé,Nestlé,Coffee,Nestlé products,Café Djerba,Tunisia,Low
+48,Purina,Nestlé,Pet Food,Nestlé products,Aliment Animal,Local,Low
+49,Audi,Volkswagen,Automotive,Some Israeli operations,Mercedes,Global,Low
+50,BMW,BMW,Automotive,Israeli market involvement,Mercedes,Global,Low

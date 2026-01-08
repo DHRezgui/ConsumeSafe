@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConsumeSafe - Boycott Conscient pour la Palestine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes float-dramatic {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                filter: drop-shadow(0 0 20px rgba(206, 17, 38, 0.5));
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+                filter: drop-shadow(0 0 50px rgba(206, 17, 38, 0.8));
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @keyframes pulsing-text {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(206, 17, 38, 0.5), 0 0 40px rgba(206, 17, 38, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(206, 17, 38, 0.8), 0 0 60px rgba(206, 17, 38, 0.6);
+            }
+        }
+
+        @keyframes float-images {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-50px) rotate(10deg) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes rise-and-glow {
+            0% {
+                transform: scale(0.5) translateY(50px);
+                opacity: 0;
+                filter: drop-shadow(0 0 0px rgba(34, 197, 94, 0));
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+                filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.8));
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.3);
+            }
+        }
+
+        @keyframes strikethrough-animation {
+            0% {
+                text-decoration: none;
+            }
+            50% {
+                text-decoration: line-through;
+                text-decoration-color: #ef4444;
+                text-decoration-thickness: 3px;
+            }
+            100% {
+                text-decoration: line-through;
+                text-decoration-color: #ef4444;
+                text-decoration-thickness: 3px;
+            }
+        }
+
+        .floating-image {
+            font-size: 2rem;
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .shimmer {
+            animation: shimmer 2s infinite;
+            background: linear-gradient(90deg, #000 0%, #ce1126 50%, #007a5e 100%);
+            background-size: 1000px 100%;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Gradients */
+        .gradient-palestine {
+            background: linear-gradient(135deg, #000000 0%, #ce1126 50%, #007a5e 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ce1126 0%, #007a5e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(206, 17, 38, 0.7) 50%, rgba(0, 122, 94, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .flag-emoji {
+            font-size: 4rem;
+            display: inline-block;
+            margin: 0 10px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Impact stats */
+        .stat-box {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-left: 4px solid #ce1126;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            border-left-color: #007a5e;
+            transform: scale(1.05);
+        }
+
+        /* Search bar */
+        .search-container {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #007a5e;
+            border-radius: 50px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #ce1126;
+            box-shadow: 0 0 20px rgba(206, 17, 38, 0.3);
+        }
+
+        /* Product grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #ce1126;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(206, 17, 38, 0.2);
+        }
+
+        .product-header {
+            background: linear-gradient(135deg, #ce1126 0%, #007a5e 100%);
+            color: white;
+            padding: 20px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-body {
+            padding: 20px;
+        }
+
+        .alternative-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideInUp 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Impact section */
+        .impact-section {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(206, 17, 38, 0.8) 100%);
+            color: white;
+            padding: 60px 20px;
+            margin: 60px 0;
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .impact-stat h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ce1126;
+            margin: 10px 0;
+        }
+
+        /* Message emotionnel */
+        .emotional-message {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 6px solid #ce1126;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            line-height: 1.8;
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #ce1126 0%, #8b0a1f 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(206, 17, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #007a5e 0%, #005040 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 122, 94, 0.4);
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 4px solid rgba(206, 17, 38, 0.2);
+            border-top: 4px solid #ce1126;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #ce1126;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #007a5e;
+        }
+
+        /* Statistics */
+        .statistics-section {
+            background: white;
+            padding: 50px 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ce1126;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Why boycott section */
+        .why-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 60px 20px;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+            border-left: 5px solid #ce1126;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .reason-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .flag-emoji {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 glass border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="flag-emoji">🇵🇸</span>
+                <h1 class="text-2xl font-bold gradient-text">ConsumeSafe</h1>
+            </div>
+            <div class="hidden md:flex gap-6">
+                <a href="#search" class="text-gray-700 hover:text-red-600 font-semibold transition">Produits</a>
+                <a href="#why" class="text-gray-700 hover:text-red-600 font-semibold transition">Pourquoi</a>
+                <a href="#impact" class="text-gray-700 hover:text-red-600 font-semibold transition">Impact</a>
+                <a href="#alternatives" class="text-gray-700 hover:text-red-600 font-semibold transition">Alternatives</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><defs><pattern id=%22grid%22 width=%2240%22 height=%2240%22 patternUnits=%22userSpaceOnUse%22><path d=%22M 40 0 L 0 0 0 40%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.1)%22 stroke-width=%221%22/></pattern></defs><rect width=%221200%22 height=%22600%22 fill=%22%23000%22/><rect width=%221200%22 height=%22600%22 fill=%22url(%23grid)%22/></svg>');">
+        <div class="hero-content animate-fade-up">
+            <div class="mb-6">
+                <span class="flag-emoji">🇵🇸</span>
+                <span class="flag-emoji">✊</span>
+                <span class="flag-emoji">❤️</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-white leading-tight">
+                Votre <span class="text-yellow-300">Consommation</span> Est Un <span class="text-yellow-300">Vote</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
+                Chaque achat compte. Découvrez les produits à boycotter et les alternatives éthiques tunisiennes.
+            </p>
+            <p class="text-lg text-gray-300 mb-10 italic">
+                "Les enfants de Palestine comptent sur vos choix. Pas votre pitié, votre action." 🇵🇸
+            </p>
+            <div>
+                <button class="btn-primary text-lg px-10 py-4" onclick="scrollToSection('search')">Commencer</button>
+                <button class="btn-secondary text-lg px-10 py-4" onclick="scrollToSection('why')">En Savoir Plus</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emotional Message Section -->
+    <section class="max-w-6xl mx-auto px-4 py-20">
+        <div class="emotional-message animate-fade-up">
+            <h2 class="text-3xl font-bold mb-4 text-red-700">
+                <i class="fas fa-heart animate-heartbeat mr-3"></i>
+                Un Message de Solidarité
+            </h2>
+            <p class="mb-4">
+                Chaque produit que vous n'achetez pas est un acte de résistance pacifique. Chaque alternative tunisienne que vous choisissez soutient l'économie locale et envoie un message clair : le boycott fonctionne.
+            </p>
+            <p class="mb-4">
+                Nous ne demandons pas la pitié. Nous demandons la justice. Et la justice commence par des choix conscients.
+            </p>
+            <p class="font-bold text-red-700">
+                🇵🇸 "Free Palestine" n'est pas qu'un slogan, c'est une responsabilité partagée. 🇵🇸
+            </p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-20">
+            <div class="stat-box animate-fade-up" style="animation-delay: 0.1s">
+                <div class="text-4xl font-bold text-red-600 mb-2">50+</div>
+                <div class="text-lg font-semibold text-gray-700">Marques Surveillées</div>
+                <p class="text-sm text-gray-600 mt-2">Les plus grandes multinationales impliquées</p>
+            </div>
+            <div class="stat-box animate-fade-up" style="animation-delay: 0.2s">
+                <div class="text-4xl font-bold text-green-600 mb-2">100+</div>
+                <div class="text-lg font-semibold text-gray-700">Alternatives Tunisiennes</div>
+                <p class="text-sm text-gray-600 mt-2">Produits locaux de qualité</p>
+            </div>
+            <div class="stat-box animate-fade-up" style="animation-delay: 0.3s">
+                <div class="text-4xl font-bold text-blue-600 mb-2">∞</div>
+                <div class="text-lg font-semibold text-gray-700">Impact Potentiel</div>
+                <p class="text-sm text-gray-600 mt-2">Votre pouvoir en tant que consommateur</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Boycott Section -->
+    <section id="why" class="why-section">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center text-gray-900">
+                Pourquoi Boycotter ?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="reason-card animate-slide-left">
+                    <div class="reason-icon">💼</div>
+                    <h3 class="text-2xl font-bold mb-4">Financement Éthique</h3>
+                    <p>Ces entreprises financent directement ou indirectement l'occupation. Chaque achat renforce les structures d'oppression.</p>
+                </div>
+                <div class="reason-card animate-slide-right">
+                    <div class="reason-icon">🌍</div>
+                    <h3 class="text-2xl font-bold mb-4">Responsabilité Globale</h3>
+                    <p>Nous sommes tous complices si nous ne faisons rien. Le boycott est le seul outil pacifique dont nous disposons.</p>
+                </div>
+                <div class="reason-card animate-slide-left">
+                    <div class="reason-icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="text-2xl font-bold mb-4">Enfants Innocents</h3>
+                    <p>Plus de 50 000 enfants palestiniens ont perdu la vie. Chaque boycott dit : leurs vies comptent.</p>
+                </div>
+                <div class="reason-card animate-slide-right">
+                    <div class="reason-icon">🇹🇳</div>
+                    <h3 class="text-2xl font-bold mb-4">Soutenir la Tunisie</h3>
+                    <p>Acheter local renforce notre économie, crée des emplois, et construit une alternative durable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="max-w-6xl mx-auto px-4 py-20">
+        <h2 class="text-4xl font-bold text-center mb-10">
+            Rechercher <span class="gradient-text">les Produits à Boycotter</span>
+        </h2>
+        
+        <!-- Action Buttons Row -->
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+            <button onclick="downloadBoycottList()" class="bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition flex items-center gap-2">
+                <i class="fas fa-download"></i> Télécharger Liste CSV
+            </button>
+            <button onclick="filterByCategory()" class="bg-purple-600 text-white px-6 py-3 rounded-full font-bold hover:bg-purple-700 transition flex items-center gap-2">
+                <i class="fas fa-filter"></i> Filtrer par Catégorie
+            </button>
+            <button onclick="showStatistics()" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-bold hover:bg-indigo-700 transition flex items-center gap-2">
+                <i class="fas fa-chart-pie"></i> Statistiques
+            </button>
+        </div>
+        
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Recherchez une marque ou un produit..."
+                autocomplete="off"
+            >
+            <i class="fas fa-search absolute right-5 top-5 text-green-700 text-xl"></i>
+        </div>
+
+        <div id="productsContainer" class="products-grid"></div>
+        <div id="noResults" class="text-center py-20 hidden">
+            <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+            <p class="text-2xl text-gray-600">Aucun produit trouvé</p>
+            <p class="text-gray-500 mt-2">Essayez une autre recherche</p>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact-section">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center">
+                L'Impact du Boycott
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="impact-stat">
+                    <i class="fas fa-chart-line text-4xl mb-4"></i>
+                    <h3>$10 Milliards</h3>
+                    <p>Pertes estimées pour les entreprises boycottées en 2023-2024</p>
+                </div>
+                <div class="impact-stat">
+                    <i class="fas fa-users text-4xl mb-4"></i>
+                    <h3>Millions</h3>
+                    <p>De personnes engagées dans le mouvement BDS mondial</p>
+                </div>
+                <div class="impact-stat">
+                    <i class="fas fa-heart text-4xl mb-4"></i>
+                    <h3>Infini</h3>
+                    <p>Votre impact quand vous refusez de financer l'occupation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternatives Section -->
+    <section id="alternatives" class="max-w-6xl mx-auto px-4 py-20">
+        <h2 class="text-4xl font-bold text-center mb-10">
+            <span class="gradient-text">Alternatives Tunisiennes</span>
+        </h2>
+        <p class="text-center text-gray-700 mb-10 text-lg">
+            Chaque produit boycotté a une excellente alternative locale. Soutenez l'économie tunisienne.
+        </p>
+        <div id="alternativesContainer" class="products-grid"></div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="bg-gradient-to-r from-red-600 to-green-600 py-16 my-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Restez Informé</h2>
+            <p class="text-white mb-8 text-lg">Recevez les mises à jour sur les nouveaux produits à boycotter et les alternatives.</p>
+            <div class="flex gap-3 justify-center flex-wrap">
+                <input type="email" placeholder="Votre email" class="px-6 py-3 rounded-full w-full max-w-sm" id="emailInput">
+                <button onclick="subscribeNewsletter()" class="bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">
+                    <i class="fas fa-envelope mr-2"></i> S'abonner
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="gradient-palestine py-20 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4 animate-fade-up">
+            <h2 class="text-4xl font-bold mb-6">
+                Êtes-vous Prêt à Faire la Différence ?
+            </h2>
+            <p class="text-xl mb-10 leading-relaxed">
+                Chaque action compte. Partagez ConsumeSafe avec vos amis et votre famille. Ensemble, nous pouvons exercer une pression économique réelle pour la justice.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <button class="bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition" onclick="shareOnTwitter()">
+                    <i class="fab fa-twitter mr-2"></i> Partager
+                </button>
+                <button class="bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition" onclick="shareOnFacebook()">
+                    <i class="fab fa-facebook mr-2"></i> Partager
+                </button>
+                <button class="bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition" onclick="shareOnWhatsApp()">
+                    <i class="fab fa-whatsapp mr-2"></i> Partager
+                </button>
+            </div>
+            <p class="text-lg italic">
+                🇵🇸 "Le boycott est la voix des sans-voix. Parlez pour les enfants de Palestine." 🇵🇸
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <span class="text-3xl">🇵🇸</span>
+                <h3 class="text-2xl font-bold">ConsumeSafe</h3>
+                <span class="text-3xl">✊</span>
+            </div>
+            <p class="mb-6 text-gray-400">
+                Boycott Conscient pour la Palestine • Alternatives Tunisiennes Éthiques
+            </p>
+            <div class="footer-links">
+                <a href="javascript:void(0)" onclick="scrollToSection('why')"><i class="fas fa-heart"></i> À Propos</a>
+                <a href="javascript:void(0)" onclick="shareOnEmail()"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="javascript:void(0)" onclick="shareProject()"><i class="fas fa-share-alt"></i> Partager</a>
+                <a href="javascript:void(0)" onclick="downloadGuide()"><i class="fas fa-book"></i> Guide</a>
+            </div>
+            <p class="text-gray-500 text-sm mt-10">
+                Fait avec ❤️ pour la Palestine | Version 3.0 - Design Moderne & Émotionnel
+            </p>
+            <p class="text-gray-600 text-sm mt-4">
+                🇵🇸 "Aucune liberté n'est gagnée sans sacrifice. Le boycott est notre arme pacifique." 🇵🇸
+            </p>
+        </div>
+    </footer>
+
+    <!-- Statistics Modal -->
+    <div id="statisticsModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">📊 Statistiques ConsumeSafe</h2>
+                <button class="text-2xl cursor-pointer text-gray-500 hover:text-gray-700" onclick="closeStatisticsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg border-2 border-red-300">
+                    <p class="text-4xl font-black text-red-600 mb-2" id="totalProductsCount">50</p>
+                    <p class="text-sm font-bold text-gray-700">Produits Boycottés</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border-2 border-blue-300">
+                    <p class="text-4xl font-black text-blue-600 mb-2" id="categoriesCount">26</p>
+                    <p class="text-sm font-bold text-gray-700">Catégories</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border-2 border-purple-300">
+                    <p class="text-4xl font-black text-purple-600 mb-2" id="brandsCount">29</p>
+                    <p class="text-sm font-bold text-gray-700">Marques</p>
+                </div>
+            </div>
+
+            <!-- Categories Breakdown -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-4">Répartition par Catégorie:</h3>
+                <div id="categoriesBreakdown" class="space-y-3 max-h-64 overflow-y-auto"></div>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="closeStatisticsModal()" class="btn-primary flex-1">Fermer</button>
+                <button onclick="shareStatistics()" class="btn-secondary flex-1">
+                    <i class="fas fa-share-alt mr-2"></i> Partager
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Filter Modal -->
+    <div id="filterModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">🔍 Filtrer par Catégorie</h2>
+                <button class="text-2xl cursor-pointer text-gray-500 hover:text-gray-700" onclick="closeFilterModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <p class="text-gray-600 mb-6">Sélectionnez une catégorie pour voir les produits correspondants:</p>
+            
+            <div id="categoriesGrid" class="grid grid-cols-2 gap-3 mb-8 max-h-64 overflow-y-auto"></div>
+
+            <div class="flex gap-4">
+                <button onclick="closeFilterModal()" class="btn-primary flex-1">Annuler</button>
+                <button onclick="showAllProducts()" class="btn-secondary flex-1">
+                    <i class="fas fa-redo mr-2"></i> Tous les produits
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dramatic Boycott Animation Overlay -->
+    <div id="boycottAnimation" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        
+        <!-- Floating Dramatic War Images Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-image" style="top: 10%; left: 5%; animation: float-images 6s ease-in-out infinite; font-size: 2rem;">💔</div>
+            <div class="floating-image" style="top: 20%; right: 8%; animation: float-images 7s ease-in-out infinite 1s; font-size: 2rem;">🕊️</div>
+            <div class="floating-image" style="top: 60%; left: 10%; animation: float-images 8s ease-in-out infinite 2s; font-size: 2rem;">😢</div>
+            <div class="floating-image" style="top: 30%; right: 15%; animation: float-images 9s ease-in-out infinite 3s; font-size: 2rem;">⚰️</div>
+            <div class="floating-image" style="bottom: 20%; left: 20%; animation: float-images 6s ease-in-out infinite 1.5s; font-size: 2rem;">🚨</div>
+            <div class="floating-image" style="top: 15%; left: 50%; animation: float-images 7s ease-in-out infinite 2.5s; font-size: 2rem;">🔥</div>
+            <div class="floating-image" style="bottom: 30%; right: 10%; animation: float-images 8s ease-in-out infinite 1s; font-size: 2rem;">💧</div>
+            <div class="floating-image" style="top: 50%; right: 5%; animation: float-images 9s ease-in-out infinite 3.5s; font-size: 2rem;">👧</div>
+            <div class="floating-image" style="bottom: 40%; left: 30%; animation: float-images 7s ease-in-out infinite 2s; font-size: 2rem;">👦</div>
+        </div>
+        
+        <div class="absolute inset-0 flex items-center justify-center overflow-hidden p-4">
+            <!-- Floating Product Animation -->
+            <div id="floatingProduct" class="animate-pulse-glow relative z-10" style="animation: float-dramatic 3s ease-in-out infinite; max-width: 500px;">
+                <div class="text-center">
+                    <!-- Large Prohibited Sign -->
+                    <div class="mb-3 animate-heartbeat">
+                        <div class="relative inline-block">
+                            <div style="font-size: 80px; line-height: 1;">🚫</div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px;">⚠️</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Name in Bold Red -->
+                    <h2 id="boycottProductName" class="text-2xl font-black text-red-600 mb-3 drop-shadow-lg relative" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); animation: strikethrough-animation 1s ease-out forwards;">
+                        BOYCOTT!
+                    </h2>
+                    
+                    <!-- Emotional Message -->
+                    <div class="bg-white/95 backdrop-blur px-6 py-4 rounded-lg max-w-md mx-auto mb-4">
+                        <p class="text-base font-bold text-red-700 mb-2">🇵🇸 CETTE MARQUE SOUTIENT L'OCCUPATION 🇵🇸</p>
+                        <p id="boycottReason" class="text-xs text-gray-800 mb-3 leading-relaxed"></p>
+                        
+                        <!-- Impact Stats -->
+                        <div class="grid grid-cols-3 gap-1 my-3">
+                            <div class="bg-red-50 p-2 rounded">
+                                <p class="font-bold text-red-600 text-xs">Millions</p>
+                                <p class="text-xs text-gray-700">vies</p>
+                            </div>
+                            <div class="bg-red-50 p-2 rounded">
+                                <p class="font-bold text-red-600 text-xs">50000+</p>
+                                <p class="text-xs text-gray-700">enfants</p>
+                            </div>
+                            <div class="bg-red-50 p-2 rounded">
+                                <p class="font-bold text-red-600 text-xs">∞</p>
+                                <p class="text-xs text-gray-700">Pouvoir</p>
+                            </div>
+                        </div>
+
+                        <!-- Emotional Call to Action -->
+                        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-2 my-3">
+                            <p class="text-xs font-bold text-yellow-800">
+                                💔 "Chaque achat est un vote." 💔
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Green Alternative - Positive Animation -->
+                    <div class="bg-gradient-to-r from-green-400 via-green-500 to-emerald-500 border-4 border-green-300 px-5 py-4 rounded-xl my-4 shadow-lg transform transition-all" style="animation: rise-and-glow 1s ease-out;">
+                        <div style="animation: sparkle 2s ease-in-out infinite;">
+                            <p class="text-xs text-white/90 mb-1">ALTERNATIVE TUNISIENNE:</p>
+                            <p id="alternativeProduct" class="text-lg font-black text-white drop-shadow-lg mb-1"></p>
+                            <p class="text-xs text-white/90 italic">🇹🇳 Tunisie = Palestine. Un même cœur. 🇵🇸</p>
+                        </div>
+                    </div>
+
+                    <!-- Dramatic Buttons -->
+                    <div class="flex gap-2 justify-center flex-wrap relative z-20">
+                        <button onclick="closeboycottAnimation()" class="bg-white text-red-600 px-5 py-2 rounded-full font-bold text-xs hover:bg-gray-100 transition transform hover:scale-105">
+                            <i class="fas fa-times mr-1"></i> Fermer
+                        </button>
+                        <button onclick="choosingAlternative()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-2 rounded-full font-bold text-xs hover:shadow-lg transition transform hover:scale-105">
+                            <i class="fas fa-heart mr-1"></i> Je choisis!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT FLOATING BUTTON -->
+    <button onclick="openChatbot()" class="fixed bottom-8 right-8 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full p-4 shadow-2xl hover:scale-110 transition z-40 animate-bounce" title="Ouvrir le chatbot IA">
+        <i class="fas fa-comments text-2xl"></i>
+    </button>
+
+    <!-- CHATBOT MODAL -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content" style="width: 400px; max-width: 90%; height: 600px; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden;">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">💬 AssistantIA</h3>
+                    <p class="text-sm opacity-90">Posez vos questions</p>
+                </div>
+                <button onclick="closeChatbot()" class="text-2xl hover:scale-125 transition">✕</button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 bg-white space-y-4">
+                <div class="flex justify-start">
+                    <div class="bg-gray-200 text-gray-900 p-3 rounded-lg max-w-xs">
+                        <i class="fas fa-robot mr-2 text-green-600"></i> Bonjour! 👋 Je suis l'assistant IA ConsumeSafe. Comment puis-je vous aider?
+                    </div>
+                </div>
+                <div class="flex justify-start">
+                    <div class="bg-gray-200 text-gray-900 p-3 rounded-lg text-sm max-w-xs">
+                        💡 <strong>Vous pouvez me demander:</strong>
+                        <ul class="mt-2 ml-4 list-disc">
+                            <li>Quels produits boycotter</li>
+                            <li>Trouver des alternatives</li>
+                            <li>Comprendre les raisons</li>
+                            <li>Obtenir des statistiques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="border-t p-4 bg-gray-50">
+                <div class="flex gap-2">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
+                        placeholder="Posez une question..."
+                    >
+                    <button 
+                        onclick="sendChatMessage()" 
+                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition font-semibold"
+                    >
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allProducts = [];
+        let debounceTimer;
+
+        // Navigation scroll function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Fetch products from API
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://localhost:8000/api/products');
+                if (!response.ok) throw new Error('Erreur de chargement');
+                allProducts = await response.json();
+                displayProducts(allProducts.slice(0, 12));
+                
+                // Load alternatives section
+                const alternatives = allProducts.filter(p => p['Tunisian Alternative']).slice(0, 6);
+                displayAlternatives(alternatives);
+            } catch (error) {
+                console.error('Erreur:', error);
+                document.getElementById('productsContainer').innerHTML = 
+                    '<div class="col-span-full text-center py-10"><p class="text-red-600 font-bold">Erreur de connexion à l\'API</p></div>';
+            }
+        }
+
+        // Display alternatives
+        function displayAlternatives(alternatives) {
+            const container = document.getElementById('alternativesContainer');
+            if (!container) return;
+            
+            container.innerHTML = alternatives.map((product, index) => `
+                <div class="product-card card-hover animate-fade-up" style="animation-delay: ${index * 0.05}s; cursor: pointer;" onclick='showBoycottAnimation(${JSON.stringify(product).replace(/'/g, "&apos;")})'>
+                    <div class="product-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <h3 class="font-bold text-lg">${product['Tunisian Alternative'] || 'N/A'}</h3>
+                        <p class="text-sm opacity-90">${product['Alternative Brand'] || 'Marque tunisienne'}</p>
+                    </div>
+                    <div class="product-body">
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-gray-600">ALTERNATIVE À</span>
+                            <p class="text-sm font-bold text-gray-800">${product['Product Name'] || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-gray-600">MARQUE ORIGINALE</span>
+                            <p class="text-sm text-gray-700">${product['Brand'] || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-green-600">CATÉGORIE</span>
+                            <p class="text-sm font-bold text-green-700">${product['Category'] || 'N/A'}</p>
+                        </div>
+                        <button onclick='event.stopPropagation(); showBoycottAnimation(${JSON.stringify(product).replace(/'/g, "&apos;")})' class="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition font-semibold">
+                            <i class="fas fa-heart mr-2"></i> En Savoir Plus
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search with debounce
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+            const query = e.target.value.toLowerCase();
+            
+            if (!query) {
+                displayProducts(allProducts.slice(0, 12));
+                document.getElementById('noResults').classList.add('hidden');
+                return;
+            }
+
+            debounceTimer = setTimeout(() => {
+                const filtered = allProducts.filter(p => 
+                    p['Product Name']?.toLowerCase().includes(query) ||
+                    p['Brand']?.toLowerCase().includes(query) ||
+                    p['Category']?.toLowerCase().includes(query) ||
+                    p['Tunisian Alternative']?.toLowerCase().includes(query)
+                );
+                
+                if (filtered.length === 0) {
+                    document.getElementById('productsContainer').innerHTML = '';
+                    document.getElementById('noResults').classList.remove('hidden');
+                } else {
+                    displayProducts(filtered);
+                    document.getElementById('noResults').classList.add('hidden');
+                }
+            }, 300);
+        });
+
+        // Display products
+        function displayProducts(products) {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = products.map((product, index) => `
+                <div class="product-card card-hover animate-fade-up" style="animation-delay: ${index * 0.05}s; cursor: pointer;" onclick='showBoycottAnimation(${JSON.stringify(product).replace(/'/g, "&apos;")})'>
+                    <div class="product-header">
+                        <h3 class="font-bold text-lg">${product['Product Name'] || 'N/A'}</h3>
+                        <p class="text-sm opacity-90">${product['Brand'] || 'Marque inconnue'}</p>
+                    </div>
+                    <div class="product-body">
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-gray-600">CATÉGORIE</span>
+                            <p class="text-sm font-bold text-gray-800">${product['Category'] || 'N/A'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-gray-600">RAISON DU BOYCOTT</span>
+                            <p class="text-sm text-gray-700">${product['Reason'] || 'Implication économique'}</p>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-green-600">ALTERNATIVE TUNISIENNE</span>
+                            <p class="text-sm font-bold text-green-700">✓ ${product['Tunisian Alternative'] || 'À découvrir'}</p>
+                        </div>
+                        <button onclick='event.stopPropagation(); showBoycottAnimation(${JSON.stringify(product).replace(/'/g, "&apos;")})' class="w-full mt-4 bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold">
+                            <i class="fas fa-info-circle mr-2"></i> Détails
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show product details - REMOVED (now uses showBoycottAnimation directly)
+        function showProductDetails(product) {
+            showBoycottAnimation(product);
+        }
+
+        // Show dramatic boycott animation
+        function showBoycottAnimation(product) {
+            document.getElementById('boycottProductName').textContent = product['Product Name'] + ' 🚫';
+            document.getElementById('boycottReason').textContent = product['Reason'];
+            document.getElementById('alternativeProduct').textContent = product['Tunisian Alternative'] + ' 🇹🇳';
+            
+            // Add pulsing animation to the text
+            document.getElementById('boycottProductName').style.animation = 'pulsing-text 1s ease-in-out infinite';
+            
+            const animation = document.getElementById('boycottAnimation');
+            animation.classList.remove('hidden');
+            
+            // Add shake effect on entrance
+            const floatingProduct = document.getElementById('floatingProduct');
+            floatingProduct.style.animation = 'none';
+            setTimeout(() => {
+                floatingProduct.style.animation = 'float-dramatic 3s ease-in-out infinite';
+            }, 10);
+
+            // Play sound effect if available
+            playDramaticSound();
+        }
+
+        function closeboycottAnimation() {
+            document.getElementById('boycottAnimation').classList.add('hidden');
+        }
+
+        function choosingAlternative() {
+            const productName = document.getElementById('alternativeProduct').textContent;
+            closeboycottAnimation();
+            alert('✓ Excellente choix! 🇵🇸\n\nVous soutenez maintenant l\'économie tunisienne tout en refusant de financer l\'occupation.\n\nMarque choisie: ' + productName);
+        }
+
+        function playDramaticSound() {
+            // Create audio context for dramatic sound
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 200;
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch(e) {
+                console.log('Audio not available');
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('show');
+        }
+
+        // Share product
+        function shareProduct() {
+            const title = document.getElementById('modalTitle').textContent;
+            const text = `Je boycotte ${title}! Découvrez les alternatives tunisiennes sur ConsumeSafe 🇵🇸`;
+            if (navigator.share) {
+                navigator.share({ title: 'ConsumeSafe', text: text });
+            } else {
+                alert('Partage: ' + text);
+            }
+        }
+
+        // Share functions
+        function shareOnTwitter() {
+            const text = encodeURIComponent('Découvrez ConsumeSafe - Boycott conscient pour la Palestine 🇵🇸 Alternatives tunisiennes éthiques 🇹🇳');
+            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent('Découvrez ConsumeSafe - Boycott conscient pour la Palestine 🇵🇸 Alternatives tunisiennes éthiques 🇹🇳');
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        function shareOnEmail() {
+            const subject = encodeURIComponent('ConsumeSafe - Boycott conscient pour la Palestine');
+            const body = encodeURIComponent('Découvrez ConsumeSafe - Une plateforme pour découvrir les produits à boycotter et leurs alternatives tunisiennes éthiques.\n\n🇵🇸 Votre consommation est un vote pour la justice.');
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        }
+
+        function shareProject() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ConsumeSafe',
+                    text: 'Découvrez ConsumeSafe - Boycott conscient pour la Palestine avec alternatives tunisiennes 🇵🇸',
+                    url: window.location.href
+                });
+            } else {
+                alert('ConsumeSafe - Boycott conscient pour la Palestine 🇵🇸');
+            }
+        }
+
+        function downloadGuide() {
+            alert('📋 Guide de ConsumeSafe\n\n1. Cherchez un produit\n2. Découvrez pourquoi il est boycotté\n3. Choisissez l\'alternative tunisienne\n4. Partagez avec vos proches\n\n🇵🇸 Ensemble, nous pouvons faire la différence!');
+        }
+
+        // Download boycott list as CSV
+        function downloadBoycottList() {
+            window.location.href = 'http://localhost:8000/api/download/boycott_list.csv';
+        }
+
+        // Filter by category
+        function filterByCategory() {
+            const categories = Array.from(new Set(allProducts.map(p => p['Category']))).sort();
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            
+            categoriesGrid.innerHTML = categories.map(cat => `
+                <button onclick="filterBySpecificCategory('${cat}')" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-4 rounded-lg font-bold hover:shadow-lg transition transform hover:scale-105">
+                    ${cat}
+                </button>
+            `).join('');
+            
+            document.getElementById('filterModal').classList.add('show');
+        }
+
+        function filterBySpecificCategory(category) {
+            const filtered = allProducts.filter(p => p['Category'] === category);
+            displayProducts(filtered);
+            closeFilterModal();
+            scrollToSection('search');
+        }
+
+        function closeFilterModal() {
+            document.getElementById('filterModal').classList.remove('show');
+        }
+
+        function showAllProducts() {
+            displayProducts(allProducts.slice(0, 12));
+            closeFilterModal();
+        }
+
+        // Show statistics
+        function showStatistics() {
+            const totalProducts = allProducts.length;
+            const categories = new Set(allProducts.map(p => p['Category']));
+            const brands = new Set(allProducts.map(p => p['Brand']));
+            
+            document.getElementById('totalProductsCount').textContent = totalProducts;
+            document.getElementById('categoriesCount').textContent = categories.size;
+            document.getElementById('brandsCount').textContent = brands.size;
+            
+            // Build categories breakdown
+            const categoriesBreakdown = document.getElementById('categoriesBreakdown');
+            let html = '';
+            
+            Array.from(categories).sort().forEach(cat => {
+                const count = allProducts.filter(p => p['Category'] === cat).length;
+                const percentage = Math.round((count / totalProducts) * 100);
+                html += `
+                    <div class="bg-gray-50 p-3 rounded-lg border-l-4 border-indigo-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold text-gray-800">${cat}</span>
+                            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-bold">${count}</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full" style="width: ${percentage}%"></div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">${percentage}% des produits</p>
+                    </div>
+                `;
+            });
+            
+            categoriesBreakdown.innerHTML = html;
+            document.getElementById('statisticsModal').classList.add('show');
+        }
+
+        function closeStatisticsModal() {
+            document.getElementById('statisticsModal').classList.remove('show');
+        }
+
+        // Subscribe to newsletter
+        function subscribeNewsletter() {
+            const email = document.getElementById('emailInput').value;
+            if (!email || !email.includes('@')) {
+                alert('❌ Veuillez entrer une adresse email valide');
+                return;
+            }
+            alert(`✅ Merci! Vous êtes abonné à la newsletter ConsumeSafe.\n\nEmail: ${email}\n\n🇵🇸 Ensemble pour la Palestine!`);
+            document.getElementById('emailInput').value = '';
+        }
+
+        // CHATBOT FUNCTIONS
+        async function sendChatMessage() {
+            const inputField = document.getElementById('chatInput');
+            const message = inputField.value.trim();
+            
+            if (!message) return;
+
+            // Add user message to chat
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML += `
+                <div class="flex justify-end mb-4">
+                    <div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            inputField.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const response = await fetch('http://localhost:8000/api/ai/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+                
+                // Add AI response to chat
+                chatMessages.innerHTML += `
+                    <div class="flex justify-start mb-4">
+                        <div class="bg-gray-200 text-gray-900 p-3 rounded-lg max-w-xs">
+                            <i class="fas fa-robot mr-2 text-green-600"></i> ${data.ai_response || data.response || 'Désolé, je n\'ai pas compris'}
+                        </div>
+                    </div>
+                `;
+                
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (error) {
+                console.error('Erreur chat:', error);
+                chatMessages.innerHTML += `
+                    <div class="flex justify-start mb-4">
+                        <div class="bg-red-200 text-red-900 p-3 rounded-lg max-w-xs">
+                            ❌ Erreur de connexion au chatbot
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function openChatbot() {
+            document.getElementById('chatModal').classList.add('show');
+        }
+
+        function closeChatbot() {
+            document.getElementById('chatModal').classList.remove('show');
+        }
+
+        // Allow Enter key to send message
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.target.id === 'chatInput') {
+                e.preventDefault();
+                sendChatMessage();
+            }
+        });
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeChatbot();
+            }
+        });
+
+        // Load products on page load
+        window.addEventListener('load', loadProducts);
+    </script>
+</body>
+</html>

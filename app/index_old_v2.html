@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConsumeSafe - Boycott Aware Shopping</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7c2d12 100%);
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-in;
+        }
+        
+        .palestine-flag {
+            display: inline-block;
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto;
+            animation: fadeInUp 0.8s ease-in 0.2s both;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 2px solid #dc2626;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #ef4444;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+        
+        .btn-search {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+        
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        .product-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-left: 4px solid #dc2626;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            animation: slideInUp 0.5s ease;
+            transition: all 0.3s ease;
+            border: 1px solid #334155;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+            transform: translateY(-5px);
+            border-color: #ef4444;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-danger {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .badge-warning {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .badge-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .badge-info {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .intensity-high {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        
+        .intensity-medium {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        
+        .intensity-low {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        .alternative-box {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #34d399;
+        }
+        
+        .alternative-box h4 {
+            color: #ecfdf5;
+            margin-bottom: 8px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fef2f2;
+        }
+        
+        .stat-card p {
+            color: #fee2e2;
+            margin-top: 10px;
+        }
+        
+        .message-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            animation: pulse 3s infinite;
+        }
+        
+        .message-banner p {
+            font-size: 1.1rem;
+            color: #f1f5f9;
+        }
+        
+        .solidarity-message {
+            color: #fca5a5;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .container-main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #cbd5e1;
+        }
+        
+        .loading-spinner {
+            border: 4px solid #334155;
+            border-top: 4px solid #dc2626;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            border-bottom: 3px solid #dc2626;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab:hover {
+            color: #f1f5f9;
+        }
+        
+        .tab.active {
+            color: #dc2626;
+            border-bottom-color: #dc2626;
+        }
+        
+        .reason-text {
+            color: #fca5a5;
+            font-style: italic;
+            margin-top: 8px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            border-top: 3px solid #dc2626;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 50px;
+            color: #cbd5e1;
+        }
+        
+        .footer h3 {
+            color: #dc2626;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container-main">
+            <h1 class="text-4xl font-bold mb-2">
+                🇵🇸 ConsumeSafe 🇵🇸
+            </h1>
+            <p class="text-lg text-slate-300">Check if a product is boycotted · Find Tunisian alternatives · Stand with Palestine</p>
+        </div>
+    </div>
+
+    <div class="container-main">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h2 class="text-3xl font-bold mb-4">
+                <span class="palestine-flag">🇵🇸</span>
+                Your Purchase is Your Vote
+                <span class="palestine-flag">🇵🇸</span>
+            </h2>
+            <p class="text-xl text-red-100 mb-4">Every choice matters. Boycott companies supporting Israeli occupation.</p>
+            <p class="text-red-100">Support Palestinian rights. Choose Tunisian businesses. Make a difference.</p>
+        </div>
+
+        <!-- Message Banner -->
+        <div class="message-banner">
+            <p><span class="solidarity-message" id="message-text">🇵🇸 Free Palestine from the river to the sea</span></p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-container">
+            <div class="flex gap-2 mb-4">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input flex-1" 
+                    placeholder="Search product name or brand... (e.g., Coca-Cola, Nestle, McDonalds)"
+                    onkeypress="handleKeyPress(event)"
+                >
+                <button class="btn-search" onclick="searchProduct()">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+            <button class="download-btn" onclick="downloadList()">
+                <i class="fas fa-download"></i> Download Boycott List
+            </button>
+            <button class="download-btn" onclick="loadAllProducts()">
+                <i class="fas fa-list"></i> View All
+            </button>
+            <button class="download-btn" onclick="loadStats()">
+                <i class="fas fa-chart-bar"></i> Statistics
+            </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('results')">Search Results</button>
+            <button class="tab" onclick="switchTab('about')">About BDS</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="tab-content">
+            <div id="results-container"></div>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="tab-content" style="display: none;">
+            <div class="product-card">
+                <h3 class="text-2xl font-bold text-red-400 mb-4">Why Boycott? (BDS Movement)</h3>
+                <p class="mb-4">
+                    BDS (Boycott, Divestment, Sanctions) is a Palestinian-led movement for rights and freedom. 
+                    It calls for boycotts of companies complicit in Israeli occupation of Palestinian territories.
+                </p>
+                <h4 class="text-xl font-bold text-green-400 mb-3">Three Principles of BDS:</h4>
+                <ul class="mb-4 space-y-2">
+                    <li><span class="badge badge-danger">1. Boycott</span> Companies supporting Israeli military/settlements</li>
+                    <li><span class="badge badge-danger">2. Divestment</span> Remove investments from such companies</li>
+                    <li><span class="badge badge-danger">3. Sanctions</span> Pressure governments to impose sanctions</li>
+                </ul>
+                <p class="text-red-200 italic">
+                    "ConsumeSafe helps you make ethical choices. Every purchase is political. 
+                    Choose Palestinian freedom. Choose Tunisian products."
+                </p>
+            </div>
+        </div>
+
+        <!-- Solidarity Section -->
+        <div class="mt-10 p-6 bg-gradient-to-r from-red-900 to-red-800 rounded-lg border-l-4 border-red-400">
+            <h3 class="text-2xl font-bold text-white mb-4">🇵🇸 Stand with Palestine 🇵🇸</h3>
+            <p class="text-red-100 mb-3">
+                Palestinian people have the right to self-determination and freedom from occupation. 
+                By choosing Tunisian alternatives and boycotting companies supporting Israeli apartheid, 
+                we take a concrete step toward justice.
+            </p>
+            <p class="text-red-100">
+                <strong>Remember:</strong> This is not about religion or hate. This is about human rights, 
+                justice, and supporting people living under occupation.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h3>ConsumeSafe v1.0</h3>
+        <p>🇵🇸 Boycott Israeli Apartheid · Support Palestine · Choose Tunisia 🇹🇳</p>
+        <p style="margin-top: 15px; color: #94a3b8;">Made with solidarity for Palestinian liberation</p>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                searchProduct();
+            }
+        }
+
+        async function searchProduct() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) {
+                alert('Please enter a product name');
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const response = await fetch(`${API_BASE}/check?product_name=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                displayResults(data);
+            } catch (error) {
+                showError('Error searching product: ' + error.message);
+            }
+        }
+
+        async function loadAllProducts() {
+            showLoading();
+
+            try {
+                const response = await fetch(`${API_BASE}/boycotts?limit=500`);
+                const data = await response.json();
+                displayAllProducts(data);
+            } catch (error) {
+                showError('Error loading products: ' + error.message);
+            }
+        }
+
+        async function loadStats() {
+            showLoading();
+
+            try {
+                const response = await fetch(`${API_BASE}/stats`);
+                const data = await response.json();
+                displayStats(data);
+            } catch (error) {
+                showError('Error loading statistics: ' + error.message);
+            }
+        }
+
+        function displayResults(data) {
+            const container = document.getElementById('results-container');
+
+            if (data.status === 'safe') {
+                container.innerHTML = `
+                    <div class="product-card" style="border-left-color: #10b981; background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
+                        <h3 class="text-2xl font-bold text-green-400 mb-3">
+                            <i class="fas fa-check-circle"></i> Product is Safe
+                        </h3>
+                        <p class="text-lg text-slate-300">
+                            <strong>"${data.product}"</strong> is NOT on our boycott list.
+                        </p>
+                        <p class="text-green-300 mt-4">${data.recommendation}</p>
+                    </div>
+                `;
+            } else if (data.status === 'boycotted') {
+                let html = `
+                    <div class="product-card" style="border-left-color: #ef4444;">
+                        <h3 class="text-2xl font-bold text-red-400 mb-4">
+                            <i class="fas fa-exclamation-triangle"></i> Product Boycotted!
+                        </h3>
+                        <p class="text-lg text-slate-300 mb-4">
+                            Found <strong>${data.found_items.length}</strong> item(s) to avoid:
+                        </p>
+                `;
+
+                data.found_items.forEach(item => {
+                    const intensityClass = `intensity-${item.intensity.toLowerCase()}`;
+                    html += `
+                        <div class="mt-4 pt-4 border-t border-slate-600">
+                            <h4 class="text-xl font-bold text-red-300">${item.product}</h4>
+                            <p class="text-slate-400"><strong>Brand:</strong> ${item.brand}</p>
+                            <p class="text-slate-400"><strong>Category:</strong> <span class="badge badge-info">${item.category}</span></p>
+                            <p class="text-slate-400"><strong>Intensity:</strong> <span class="${intensityClass}">${item.intensity.toUpperCase()}</span></p>
+                            <p class="reason-text"><i class="fas fa-quote-left"></i> ${item.reason}</p>
+                            
+                            <div class="alternative-box">
+                                <h4><i class="fas fa-thumbs-up"></i> Better Alternative</h4>
+                                <p class="font-bold text-lg text-white">${item.tunisian_alternative}</p>
+                                <p class="text-sm text-green-100">Brand: ${item.alternative_brand}</p>
+                                <p class="text-green-100 mt-2"><i class="fas fa-heart"></i> Support Tunisian business while standing with Palestine! 🇹🇳🇵🇸</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <div class="mt-4 p-4 bg-red-900 rounded text-red-100 border border-red-700">
+                        <p class="solidarity-message">🇵🇸 ${data.solidarity}</p>
+                    </div>
+                </div>
+                `;
+
+                container.innerHTML = html;
+            }
+        }
+
+        function displayAllProducts(data) {
+            const container = document.getElementById('results-container');
+            let html = `
+                <div class="product-card">
+                    <h3 class="text-2xl font-bold text-red-400 mb-4">
+                        Total Boycotted Products: <span class="text-white">${data.total}</span>
+                    </h3>
+            `;
+
+            data.products.forEach(product => {
+                const intensityClass = `intensity-${product.intensity.toLowerCase()}`;
+                html += `
+                    <div class="mt-4 pt-4 border-t border-slate-600">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-lg font-bold text-red-300">${product.product}</h4>
+                                <p class="text-slate-400">Brand: <strong>${product.brand}</strong></p>
+                            </div>
+                            <span class="${intensityClass}">● ${product.intensity}</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mt-2"><span class="badge badge-info">${product.category}</span></p>
+                        <div class="alternative-box mt-3">
+                            <p class="text-sm"><strong>✓ Alternative:</strong> ${product.tunisian_alternative} (${product.alternative_brand})</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    <div class="mt-4 p-4 bg-green-900 rounded text-green-100 border border-green-700">
+                        <p>🇵🇸 Together for Palestinian freedom!</p>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function displayStats(data) {
+            const container = document.getElementById('results-container');
+            let intensityHtml = '';
+            let categoryHtml = '';
+
+            for (const [intensity, count] of Object.entries(data.by_intensity)) {
+                intensityHtml += `<p>● <strong>${intensity.toUpperCase()}:</strong> ${count} products</p>`;
+            }
+
+            for (const [category, count] of Object.entries(data.by_category)) {
+                categoryHtml += `<p>● <strong>${category}:</strong> ${count} products</p>`;
+            }
+
+            const html = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>${data.total_products}</h3>
+                        <p>Total Products</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>${data.categories}</h3>
+                        <p>Categories</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="text-2xl font-bold text-red-400 mb-4">By Intensity</h3>
+                    <div class="text-slate-300">
+                        ${intensityHtml}
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="text-2xl font-bold text-red-400 mb-4">By Category</h3>
+                    <div class="text-slate-300">
+                        ${categoryHtml}
+                    </div>
+                </div>
+                
+                <div class="message-banner">
+                    <p class="solidarity-message">🇵🇸 ${data.message}</p>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function downloadList() {
+            const link = document.createElement('a');
+            link.href = `${API_BASE}/download/boycott_list.csv`;
+            link.download = 'boycott_products.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function showLoading() {
+            document.getElementById('results-container').innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading...</p>
+                </div>
+            `;
+        }
+
+        function showError(message) {
+            document.getElementById('results-container').innerHTML = `
+                <div class="product-card" style="border-left-color: #f59e0b;">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-2">
+                        <i class="fas fa-exclamation-circle"></i> Error
+                    </h3>
+                    <p class="text-slate-300">${message}</p>
+                </div>
+            `;
+        }
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).style.display = 'block';
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Load random message on startup
+        async function loadRandomMessage() {
+            try {
+                const response = await fetch(`${API_BASE}/message`);
+                const data = await response.json();
+                document.getElementById('message-text').textContent = data.message;
+            } catch (error) {
+                console.log('Message load error (not critical):', error);
+            }
+        }
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRandomMessage();
+            setInterval(loadRandomMessage, 10000); // Change message every 10 seconds
+        });
+    </script>
+</body>
+</html>

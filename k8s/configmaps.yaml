@@ -1,0 +1,252 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: consumesafe-html
+  namespace: consumesafe
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ConsumeSafe - Boycott Aware Shopping</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            body {
+                background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+                color: #f1f5f9;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .hero-section {
+                background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7c2d12 100%);
+                padding: 60px 20px;
+                text-align: center;
+            }
+            .search-input {
+                width: 100%;
+                padding: 15px 20px;
+                border: none;
+                border-radius: 8px;
+                font-size: 1rem;
+                background: #1e293b;
+                color: #f1f5f9;
+                border: 2px solid #dc2626;
+            }
+            .btn-search {
+                background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+                color: white;
+                padding: 12px 30px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .product-card {
+                background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                border-left: 4px solid #dc2626;
+                border-radius: 8px;
+                padding: 20px;
+                margin: 15px 0;
+            }
+            .alternative-box {
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-bottom: 3px solid #dc2626; padding: 20px 0; margin-bottom: 30px;">
+            <div style="max-width: 900px; margin: 0 auto; padding: 20px;">
+                <h1 style="font-size: 2.25rem; font-weight: bold;">
+                    🇵🇸 ConsumeSafe 🇵🇸
+                </h1>
+                <p style="font-size: 1.125rem; color: #cbd5e1;">Check if a product is boycotted · Find Tunisian alternatives · Stand with Palestine</p>
+            </div>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto; padding: 20px;">
+            <div class="hero-section">
+                <h2 style="font-size: 1.875rem; font-weight: bold; margin-bottom: 1rem; color: white;">
+                    🇵🇸 Your Purchase is Your Vote 🇵🇸
+                </h2>
+                <p style="font-size: 1.25rem; color: #fee2e2; margin-bottom: 1rem;">Every choice matters. Boycott companies supporting Israeli occupation.</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-left: 5px solid #10b981; padding: 20px; margin: 20px 0; border-radius: 8px; text-align: center;">
+                <p id="message-text" style="font-size: 1.1rem; color: #f1f5f9; font-weight: bold; color: #fca5a5;">🇵🇸 Free Palestine from the river to the sea</p>
+            </div>
+
+            <div style="max-width: 600px; margin: 30px auto;">
+                <div style="display: flex; gap: 8px; margin-bottom: 1rem;">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        style="flex: 1;"
+                        placeholder="Search product name or brand... (e.g., Coca-Cola, Nestle)"
+                        onkeypress="if(event.key==='Enter') searchProduct()"
+                    >
+                    <button class="btn-search" onclick="searchProduct()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <button class="btn-search" onclick="downloadList()" style="margin-right: 5px; width: 48%;">
+                    <i class="fas fa-download"></i> Download List
+                </button>
+                <button class="btn-search" onclick="loadAllProducts()" style="width: 48%;">
+                    <i class="fas fa-list"></i> View All
+                </button>
+            </div>
+
+            <div id="results-container"></div>
+
+            <div style="background: linear-gradient(135deg, #8b0000 0%, #8b0000 100%); padding: 30px 20px; text-align: center; margin-top: 50px; border-radius: 8px; color: #fee2e2;">
+                <h3 style="color: #fca5a5; margin-bottom: 15px; font-size: 1.3rem; font-weight: bold;">🇵🇸 Stand with Palestine 🇵🇸</h3>
+                <p style="margin-bottom: 15px;">Palestinian people have the right to self-determination and freedom from occupation.</p>
+                <p>By choosing Tunisian alternatives and boycotting companies supporting Israeli apartheid, we take a concrete step toward justice.</p>
+            </div>
+        </div>
+
+        <script>
+            const API_BASE = window.location.origin + '/api';
+
+            async function searchProduct() {
+                const query = document.getElementById('searchInput').value.trim();
+                if (!query) {
+                    alert('Please enter a product name');
+                    return;
+                }
+                try {
+                    const response = await fetch(`${API_BASE}/check?product_name=${encodeURIComponent(query)}`);
+                    const data = await response.json();
+                    displayResults(data);
+                } catch (error) {
+                    document.getElementById('results-container').innerHTML = `<p style="color: #ef4444;">Error: ${error.message}</p>`;
+                }
+            }
+
+            async function loadAllProducts() {
+                try {
+                    const response = await fetch(`${API_BASE}/boycotts?limit=50`);
+                    const data = await response.json();
+                    let html = `<div class="product-card"><h3 style="font-size: 1.5rem; font-weight: bold; color: #ef4444; margin-bottom: 1rem;">Total: ${data.total} Products</h3>`;
+                    data.products.forEach(p => {
+                        html += `<div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #475569;">
+                            <h4 style="font-size: 1.125rem; font-weight: bold; color: #fca5a5;">${p.product}</h4>
+                            <p style="color: #94a3b8;">Brand: <strong>${p.brand}</strong> | Category: <strong>${p.category}</strong></p>
+                            <div class="alternative-box">
+                                <p><strong>✓ Alternative:</strong> ${p.tunisian_alternative}</p>
+                            </div>
+                        </div>`;
+                    });
+                    html += `</div>`;
+                    document.getElementById('results-container').innerHTML = html;
+                } catch (error) {
+                    document.getElementById('results-container').innerHTML = `<p style="color: #ef4444;">Error loading products: ${error.message}</p>`;
+                }
+            }
+
+            function displayResults(data) {
+                const container = document.getElementById('results-container');
+                if (data.status === 'safe') {
+                    container.innerHTML = `<div class="product-card" style="border-left-color: #10b981; background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);"><h3 style="font-size: 1.5rem; font-weight: bold; color: #4ade80; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> Product is Safe</h3><p style="font-size: 1.125rem; color: #cbd5e1;"><strong>"${data.product}"</strong> is NOT on our boycott list.</p></div>`;
+                } else if (data.status === 'boycotted') {
+                    let html = `<div class="product-card"><h3 style="font-size: 1.5rem; font-weight: bold; color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle"></i> Product Boycotted!</h3>`;
+                    data.found_items.forEach(item => {
+                        html += `<div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #475569;">
+                            <h4 style="font-size: 1.125rem; font-weight: bold; color: #fca5a5;">${item.product}</h4>
+                            <p style="color: #94a3b8;"><strong>Reason:</strong> ${item.reason}</p>
+                            <div class="alternative-box">
+                                <p style="font-weight: bold; font-size: 1.125rem; color: white;">${item.tunisian_alternative}</p>
+                                <p style="font-size: 0.875rem; color: #ecfdf5;">Support Tunisian business! 🇹🇳🇵🇸</p>
+                            </div>
+                        </div>`;
+                    });
+                    html += `<div style="margin-top: 1rem; padding: 1rem; background: #7c2d12; border-radius: 8px; color: #fed7aa; border: 1px solid #92400e;"><p style="color: #fca5a5; font-weight: bold;">🇵🇸 Stand with Palestine!</p></div></div>`;
+                    container.innerHTML = html;
+                }
+            }
+
+            function downloadList() {
+                window.location.href = `${API_BASE}/download/boycott_list.csv`;
+            }
+
+            async function loadRandomMessage() {
+                try {
+                    const response = await fetch(`${API_BASE}/message`);
+                    const data = await response.json();
+                    document.getElementById('message-text').textContent = data.message;
+                } catch (error) {
+                    console.log('Message load error:', error);
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                loadRandomMessage();
+                setInterval(loadRandomMessage, 10000);
+            });
+        </script>
+    </body>
+    </html>
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: consumesafe
+data:
+  nginx.conf: |
+    user nginx;
+    worker_processes auto;
+    error_log /var/log/nginx/error.log warn;
+    pid /var/run/nginx.pid;
+
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log /var/log/nginx/access.log main;
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+
+        gzip on;
+        gzip_vary on;
+        gzip_comp_level 6;
+
+        upstream api {
+            server consumesafe-api:8000;
+        }
+
+        server {
+            listen 80;
+            server_name _;
+
+            location / {
+                root /usr/share/nginx/html;
+                try_files $uri /index.html;
+            }
+
+            location /api {
+                proxy_pass http://api;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            }
+        }
+    }
